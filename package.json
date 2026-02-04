@@ -1,0 +1,52 @@
+{
+  "name": "siray-n8n",
+  "version": "1.0.0",
+  "description": "Custom n8n nodes created by Siray",
+  "homepage": "https://github.com/siray-ai/n8n-nodes-siray#readme",
+  "bugs": {
+    "url": "https://github.com/siray-ai/n8n-nodes-siray/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/siray-ai/n8n-nodes-siray.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+		"build": "n8n-node build",
+		"build:watch": "tsc --watch",
+		"dev": "n8n-node dev",
+		"lint": "n8n-node lint",
+		"lint:fix": "n8n-node lint --fix",
+		"release": "n8n-node release",
+		"prepublishOnly": "n8n-node prerelease"
+	},
+  "devDependencies": {
+		"@n8n/node-cli": "*",
+		"eslint": "9.32.0",
+		"prettier": "3.6.2",
+		"release-it": "^19.0.4",
+		"typescript": "5.9.2"
+	},
+  
+	"files": [
+		"dist"
+	],
+  "n8n": {
+		"n8nNodesApiVersion": 1,
+		"strict": true,
+		"credentials": [
+			"dist/credentials/GithubIssuesApi.credentials.js",
+			"dist/credentials/GithubIssuesOAuth2Api.credentials.js"
+		],
+		"nodes": [
+			"dist/nodes/GithubIssues/GithubIssues.node.js",
+			"dist/nodes/Example/Example.node.js"
+		]
+	},
+	"peerDependencies": {
+		"n8n-workflow": "*"
+	}
+}
