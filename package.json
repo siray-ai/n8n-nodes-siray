@@ -1,0 +1,50 @@
+{
+  "name": "n8n-nodes-siray",
+  "version": "0.1.0",
+  "description": "Custom n8n nodes and workflows for Siray AI automation",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc && gulp build:icons",
+    "dev": "tsc --watch",
+    "format": "prettier --write \"**/*.{ts,json,md}\"",
+    "lint": "eslint . --ext .ts",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
+  },
+  "keywords": [
+    "n8n",
+    "n8n-nodes",
+    "siray",
+    "ai",
+    "automation",
+    "workflow"
+  ],
+  "author": "Siray AI",
+  "license": "SEE LICENSE IN LICENSE",
+  "n8n": {
+    "n8nNodesApiVersion": 1,
+    "credentials": [
+      "dist/credentials/SirayApi.credentials.js"
+    ],
+    "nodes": [
+      "dist/nodes/Siray/Siray.node.js"
+    ]
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.0",
+    "@types/node": "^18.0.0",
+    "@typescript-eslint/eslint-plugin": "^5.0.0",
+    "@typescript-eslint/parser": "^5.0.0",
+    "eslint": "^8.0.0",
+    "gulp": "^4.0.2",
+    "jest": "^29.5.0",
+    "n8n-workflow": "latest",
+    "prettier": "^2.8.0",
+    "ts-jest": "^29.1.0",
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "n8n-core": "latest"
+  }
+}
