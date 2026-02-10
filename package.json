@@ -1,0 +1,61 @@
+{
+  "name": "n8n-nodes-siray",
+  "version": "1.0.0",
+  "description": "Custom n8n node for Siray.ai unified AI API integration",
+  "homepage": "https://github.com/siray-ai/n8n-nodes-siray#readme",
+  "bugs": { "url": "https://github.com/siray-ai/n8n-nodes-siray/issues" },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/siray-ai/n8n-nodes-siray.git"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Siray.ai",
+    "email": "support@siray.ai"
+  },
+  "type": "commonjs",
+  "main": "index.js",
+  "keywords": [
+    "n8n-community-node-package",
+    "n8n",
+    "siray",
+    "ai",
+    "llm",
+    "text-generation",
+    "image-generation",
+    "multimodal"
+  ],
+  "scripts": {
+    "build": "n8n-node build",
+    "build:watch": "tsc --watch",
+    "dev": "n8n-node dev",
+    "lint": "n8n-node lint",
+    "lint:fix": "n8n-node lint --fix",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "release": "n8n-node release",
+    "prepublishOnly": "n8n-node prerelease"
+  },
+  "devDependencies": {
+    "@n8n/node-cli": "*",
+    "@types/jest": "^29.5.12",
+    "@types/node": "^20.11.19",
+    "eslint": "9.32.0",
+    "fast-check": "^3.15.1",
+    "jest": "^29.7.0",
+    "prettier": "3.6.2",
+    "release-it": "^19.0.4",
+    "ts-jest": "^29.1.2",
+    "typescript": "5.9.2"
+  },
+  "dependencies": { "axios": "^1.6.7" },
+  "files": ["dist"],
+  "n8n": {
+    "n8nNodesApiVersion": 1,
+    "strict": true,
+    "credentials": ["dist/credentials/SirayAi.credentials.js"],
+    "nodes": ["dist/nodes/SirayNode/SirayNode.node.js"]
+  },
+  "peerDependencies": { "n8n-workflow": "*" }
+}
