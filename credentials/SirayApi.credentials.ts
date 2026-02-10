@@ -20,7 +20,7 @@ import {
 export class SirayApi implements ICredentialType {
   name = 'sirayApi';
   displayName = 'Siray API';
-  // icon: Icon = { light: 'file:../icons/siray.svg', dark: 'file:../icons/siray.dark.svg' };
+  icon: Icon = { light: 'file:../icons/siray.svg', dark: 'file:../icons/siray.dark.svg', };
 
   documentationUrl = 'https://docs.siray.ai';
   

@@ -46,5 +46,8 @@
   },
   "dependencies": {
     "n8n-core": "latest"
-  }
+  },
+  "peerDependencies": {
+		"n8n-workflow": "*"
+	}
 }
