@@ -9,8 +9,8 @@ import { sirayImageOperation } from "./imageProperties";
 
 export class Siray implements INodeType {
   description: INodeTypeDescription = {
-    displayName: "Siray",
-    name: "siray",
+    displayName: "Siray-Image",
+    name: "sirayImage",
     icon: {
       light: "file:../../icons/siray.svg",
       dark: "file:../../icons/siray.svg",

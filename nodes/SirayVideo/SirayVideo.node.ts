@@ -9,8 +9,8 @@ import { sirayVideoOperation } from "./videoProperties";
 
 export class Siray implements INodeType {
   description: INodeTypeDescription = {
-    displayName: "Siray",
-    name: "siray",
+    displayName: "Siray-Video",
+    name: "sirayVideo",
     icon: {
       light: "file:../../icons/siray.svg",
       dark: "file:../../icons/siray.svg",

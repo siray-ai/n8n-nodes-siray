@@ -1,0 +1,61 @@
+{
+  "name": "Siray Nodes Example",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "e1234567-trigger",
+      "name": "When clicking \"Execute Workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [250, 300]
+    },
+    {
+      "parameters": {
+        "message": "Hello Siray, write a one sentence story about a robot.",
+        "filter": "user",
+        "model": "siray-chat-model",
+        "max_tokens": "100",
+        "temprature": "0.7"
+      },
+      "id": "c1234567-chat",
+      "name": "Siray Chat Example",
+      "type": "sirayChat",
+      "typeVersion": 1,
+      "position": [500, 100]
+    },
+    {
+      "parameters": {
+        "model": "siray-image-model",
+        "prompt": "A futuristic cyberpunk city skyline at sunset, 4k resolution"
+      },
+      "id": "i1234567-image",
+      "name": "Siray Image Example",
+      "type": "sirayImage",
+      "typeVersion": 1,
+      "position": [500, 300]
+    },
+    {
+      "parameters": {
+        "model": "siray-video-model",
+        "duration": "5",
+        "prompt": "A golden retriever playing fetch in a green park"
+      },
+      "id": "v1234567-video",
+      "name": "Siray Video Example",
+      "type": "sirayVideo",
+      "typeVersion": 1,
+      "position": [500, 500]
+    }
+  ],
+  "connections": {
+    "When clicking \"Execute Workflow\"": {
+      "main": [
+        [
+          { "node": "Siray Chat Example", "type": "main", "index": 0 },
+          { "node": "Siray Image Example", "type": "main", "index": 0 },
+          { "node": "Siray Video Example", "type": "main", "index": 0 }
+        ]
+      ]
+    }
+  }
+}

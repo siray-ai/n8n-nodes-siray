@@ -43,6 +43,14 @@ npm run build
 
 ```
 
+## Example Usage
+
+You can test all three nodes (Chat, Image, and Video) by copying the example JSON and pasting it directly onto your n8n canvas:
+
+<details>
+  <summary>Check <a href="./example-workflow.json">Example Workflow</a></summary>
+</details>
+
 ### Recommended
 
 - Follow n8n's [development environment setup guide](https://docs.n8n.io/integrations/creating-nodes/build/node-development-environment/)

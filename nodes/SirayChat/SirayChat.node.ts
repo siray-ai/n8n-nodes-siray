@@ -9,8 +9,8 @@ import { sirayChatOperation } from "./chatProperties";
 
 export class Siray implements INodeType {
   description: INodeTypeDescription = {
-    displayName: "Siray",
-    name: "siray",
+    displayName: "Siray-Chat",
+    name: "sirayChat",
     icon: {
       light: "file:../../icons/siray.svg",
       dark: "file:../../icons/siray.svg",
