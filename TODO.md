@@ -31,9 +31,9 @@ Track the implementation progress of Siray AI custom n8n features.
 - [x] Siray AI Embedded Node
 
 ### Workflow Templates
-- [ ] Example workflow templates
+- [x] Example workflow templates
 - [ ] Use case examples
-- [ ] Tutorial workflows
+- [x] Tutorial workflows
 
 ### Documentation
 - [ ] API documentation
