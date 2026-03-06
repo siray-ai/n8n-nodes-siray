@@ -1,0 +1,58 @@
+{
+  "name": "Tutorial: Text to Embedding",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "trigger-embed",
+      "name": "When clicking \"Execute Workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [100, 300]
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "text",
+              "value": "Decentralized finance (DeFi) offers novel financial instruments without relying on intermediaries."
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "set-text",
+      "name": "Set Document Text",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [300, 300]
+    },
+    {
+      "parameters": {
+        "model": "siray-embedding-model",
+        "input": "={{ $json.text }}"
+      },
+      "id": "embedding-1",
+      "name": "Generate Embedding",
+      "type": "sirayEmbedding",
+      "typeVersion": 1,
+      "position": [500, 300]
+    }
+  ],
+  "connections": {
+    "When clicking \"Execute Workflow\"": {
+      "main": [
+        [
+          { "node": "Set Document Text", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Set Document Text": {
+      "main": [
+        [
+          { "node": "Generate Embedding", "type": "main", "index": 0 }
+        ]
+      ]
+    }
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "name": "Tutorial: Web3 Social Media Post & Image Generator",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "trigger-seq",
+      "name": "When clicking \"Execute Workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [100, 300]
+    },
+    {
+      "parameters": {
+        "message": "Write a short, engaging tweet about the future of Web3 and DAOs.",
+        "filter": "user",
+        "model": "siray-chat-model",
+        "max_tokens": "50",
+        "temprature": "0.8"
+      },
+      "id": "chat-seq",
+      "name": "Generate Tweet",
+      "type": "sirayChat",
+      "typeVersion": 1,
+      "position": [300, 300]
+    },
+    {
+      "parameters": {
+        "model": "siray-image-model",
+        "prompt": "An abstract futuristic digital artwork representing decentralized networks and DAOs, vibrant colors, 4k"
+      },
+      "id": "image-seq",
+      "name": "Generate Image",
+      "type": "sirayImage",
+      "typeVersion": 1,
+      "position": [500, 300]
+    }
+  ],
+  "connections": {
+    "When clicking \"Execute Workflow\"": {
+      "main": [
+        [
+          { "node": "Generate Tweet", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Generate Tweet": {
+      "main": [
+        [
+          { "node": "Generate Image", "type": "main", "index": 0 }
+        ]
+      ]
+    }
+  }
+}
