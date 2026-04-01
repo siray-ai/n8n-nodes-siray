@@ -1,4 +1,5 @@
 import { NodeConnectionTypes, NodeOperationError } from "n8n-workflow";
+import { methods } from "../SirayModel";
 import type {
   IExecuteFunctions,
   INodeExecutionData,
@@ -37,6 +38,7 @@ export class Siray implements INodeType {
     ],
     properties: [...sirayImageOperation],
   };
+  methods = methods;
   async execute(this: IExecuteFunctions): Promise<INodeExecutionData[][]> {
     const items = this.getInputData();
 

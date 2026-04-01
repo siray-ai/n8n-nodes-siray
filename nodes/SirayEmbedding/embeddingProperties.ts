@@ -1,11 +1,5 @@
 import type { INodeProperties } from "n8n-workflow";
-import { sirayEmbeddings } from "../SirayModel";
 
-const sirayEmbedingsOptions = sirayEmbeddings.map((model) => ({
-  name: model.name,
-  value: model.model_name,
-  description: model.description,
-}));
 export const sirayEmbeddingOperation: INodeProperties[] = [
   {
     displayName: "Operation",
@@ -63,17 +57,30 @@ export const sirayEmbeddingOperation: INodeProperties[] = [
     default: [],
     description:
       'The input text to embed, either a string or array of strings',
+  },{
+    displayName: "Generation Type",
+    name: "generationType",
+    type: "options",
+    options: [
+      {
+        name: "Embedding",
+        value: "embedding",
+      },
+    
+    ],
+    default: "embedding",
   },
   {
     displayName: "Model",
     name: "model",
     type: "string",
     required: true,
-    options: [...sirayEmbedingsOptions],
-    
+    typeOptions: {
+          loadOptionsMethod: 'getModels',
+          loadOptionsDependsOn: ['generationType'], 
+        },
     description: "Model name to use for the request",
+    default:''
   },
-
- 
  
 ];

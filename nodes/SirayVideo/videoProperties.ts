@@ -1,17 +1,5 @@
 import type { INodeProperties } from "n8n-workflow";
-import { sirayTextToVideo, sirayImageToVideo } from "../SirayModel";
 
-const sirayTextToVideoModelOptions = sirayTextToVideo.map((model) => ({
-  name: model.name,
-  value: model.model_name,
-  description: model.description,
-}));
-
-const sirayImageToVideoModelOptions = sirayImageToVideo.map((model) => ({
-  name: model.name,
-  value: model.model_name,
-  description: model.description,
-}));
 export const sirayVideoOperation: INodeProperties[] = [
   {
     displayName: "Operation",
@@ -35,14 +23,14 @@ export const sirayVideoOperation: INodeProperties[] = [
     options: [
       {
         name: "Text to Video",
-        value: "textToVideo",
+        value: "text-to-video",
       },
       {
         name: "Image to Video",
-        value: "imageToVideo",
+        value: "image-to-video",
       },
     ],
-    default: "textToVideo",
+    default: "text-to-video",
   },
   {
     displayName: "Prompt",
@@ -64,36 +52,18 @@ export const sirayVideoOperation: INodeProperties[] = [
     },
     description: "Video duration in seconds. Fixed value: 8",
   },
-
   {
     displayName: "Model",
     name: "model",
     type: "options",
     required: true,
-    default: sirayImageToVideoModelOptions[0]?.value ?? "",
-    description: "Which LLM provider to use",
-    options: [...sirayImageToVideoModelOptions],
-    displayOptions: {
-      show: {
-        generationType: ["imageToVideo"],
-      },
-    },
+     typeOptions: {
+          loadOptionsMethod: 'getModels',
+          loadOptionsDependsOn: ['generationType'], 
+        },
+    description: "Model name to use for the request",
+    default:''
   },
-  {
-    displayName: "Model",
-    name: "model",
-    type: "options",
-    required: true,
-    default: sirayTextToVideoModelOptions[0]?.value ?? "",
-    description: "Which LLM provider to use",
-    options: [...sirayTextToVideoModelOptions],
-    displayOptions: {
-      show: {
-        generationType: ["textToVideo"],
-      },
-    },
-  },
-
   {
     displayName: "Image",
     name: "image",
@@ -101,7 +71,7 @@ export const sirayVideoOperation: INodeProperties[] = [
     default: "",
     displayOptions: {
       show: {
-        generationType: ["imageToVideo"],
+        generationType: ["image-to-video"],
       },
     },
     description: "Input image for generation, it can be data URL or image URL",

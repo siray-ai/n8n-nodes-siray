@@ -1,11 +1,4 @@
 import type { INodeProperties } from "n8n-workflow";
-import { sirayChatModel } from "../SirayModel";
-
-const sirayChatModelOptions = sirayChatModel.map((model) => ({
-  name: model.name,
-  value: model.model_name,
-  description: model.description,
-}));
 
 export const sirayChatOperation: INodeProperties[] = [
   {
@@ -61,14 +54,29 @@ export const sirayChatOperation: INodeProperties[] = [
       },
     ],
   },
+   {
+    displayName: "Generation Type",
+    name: "generationType",
+    type: "options",
+    options: [
+      {
+        name: "Chat",
+        value: "chat",
+      },
+    
+    ],
+    default: "chat",
+  },
   {
     displayName: "Model",
     name: "model",
     type: "options",
     required: true,
-    default: sirayChatModelOptions[0]?.value ?? "",
-    description: "Which LLM provider to use",
-    options: [...sirayChatModelOptions],
+   typeOptions: {
+          loadOptionsMethod: 'getModels',
+          loadOptionsDependsOn: ['generationType'], 
+        },
+        default:''
   },
   {
     displayName: "frequency_penalty",

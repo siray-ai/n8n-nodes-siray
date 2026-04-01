@@ -15,6 +15,7 @@
     "dist"
   ],
   "keywords": [
+    "n8n-community-node-package",
     "n8n",
     "n8n-nodes",
     "siray",
@@ -22,8 +23,11 @@
     "automation",
     "workflow"
   ],
-  "author": "Siray AI",
-  "license": "SEE LICENSE IN LICENSE",
+  "author": {
+		"name": "Siray AI",
+		"email": "contact@siray.ai"
+	},
+  "license": "MIT",
   "n8n": {
     "n8nNodesApiVersion": 1,
     "credentials": [
@@ -33,18 +37,17 @@
       "dist/nodes/SirayChat/SirayChat.node.js",
       "dist/nodes/SirayImage/SirayImage.node.js",
       "dist/nodes/SirayVideo/SirayVideo.node.js",
-      "dist/nodes/SirayVideo/SirayEmbedding.node.js"
+      "dist/nodes/SirayEmbedding/SirayEmbedding.node.js",
+      "dist/nodes/SirayImageTrigger/SirayImageTrigger.node.js",
+      "dist/nodes/SirayVideoTrigger/SirayVideoTrigger.node.js"
     ]
   },
   "devDependencies": {
     "@n8n/node-cli": "*",
-    "eslint": "9.32.0",
-    "prettier": "3.6.2",
-    "release-it": "^19.0.4",
-    "typescript": "5.9.2"
-  },
-  "dependencies": {
-    "n8n-core": "latest"
+		"eslint": "9.39.4",
+		"prettier": "3.8.1",
+		"release-it": "19.2.4",
+		"typescript": "5.9.3"
   },
   "peerDependencies": {
     "n8n-workflow": "*"

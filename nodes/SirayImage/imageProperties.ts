@@ -1,17 +1,5 @@
 import type { INodeProperties } from "n8n-workflow";
-import { sirayTextToImage, sirayImageToImage } from "../SirayModel";
 
-const sirayTextToImageModelOptions = sirayTextToImage.map((model) => ({
-  name: model.name,
-  value: model.model_name,
-  description: model.description,
-}));
-
-const sirayImageToImageModelOptions = sirayImageToImage.map((model) => ({
-  name: model.name,
-  value: model.model_name,
-  description: model.description,
-}));
 export const sirayImageOperation: INodeProperties[] = [
   {
     displayName: "Operation",
@@ -35,14 +23,14 @@ export const sirayImageOperation: INodeProperties[] = [
     options: [
       {
         name: "Text to Image",
-        value: "textToImage",
+        value: "text-to-image",
       },
       {
         name: "Image to Image",
-        value: "imageToImage",
+        value: "image-to-image",
       },
     ],
-    default: "textToImage",
+    default: "text-to-image",
   },
   {
     displayName: "Prompt",
@@ -53,36 +41,20 @@ export const sirayImageOperation: INodeProperties[] = [
     default: "",
     description: "Text prompt for generation",
   },
-
   {
     displayName: "Model",
     name: "model",
     type: "options",
     required: true,
-    default: sirayTextToImageModelOptions[0]?.value ?? "",
-    description: "Which LLM provider to use",
-    options: [...sirayTextToImageModelOptions],
-    displayOptions: {
-      show: {
-        generationType: ["textToImage"],
-      },
-    },
-  },
-  {
-    displayName: "Model",
-    name: "model",
-    type: "options",
-    required: true,
-    default: sirayImageToImageModelOptions[0]?.value ?? "",
-    description: "Which LLM provider to use",
-    options: [...sirayImageToImageModelOptions],
-    displayOptions: {
-      show: {
-        generationType: ["imageToImage"],
-      },
-    },
-  },
+     typeOptions: {
+          loadOptionsMethod: 'getModels',
+          loadOptionsDependsOn: ['generationType'], 
+        },
+    description: "Model name to use for the request",
+    default:''
 
+  },
+ 
   {
     displayName: "Image",
     name: "image",
@@ -90,7 +62,7 @@ export const sirayImageOperation: INodeProperties[] = [
     default: "",
     displayOptions: {
       show: {
-        generationType: ["imageToImage"],
+        generationType: ["image-to-image"],
       },
     },
     description: "Input image for generation, it can be data URL or image URL",
